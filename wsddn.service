@@ -1,0 +1,16 @@
+[Unit]
+Description=WS-Discovery Host
+Documentation=man:wsdd(8)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=notify
+ExecStart=/usr/bin/wsddn --systemd --config=/etc/conf.d/wsddn.conf 
+ExecReload=/usr/bin/kill -HUP $MAINPID
+DynamicUser=yes
+User=wsdd
+Group=wsdd
+
+[Install]
+WantedBy=multi-user.target
