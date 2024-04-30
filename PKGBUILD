@@ -1,7 +1,7 @@
 # Maintainer: Larson Thorpe <ltthorpe@lrsservers.org>
 pkgname=wsddn
 _altname=wsdd-native
-pkgver=1.9
+pkgver=1.10
 pkgrel=1
 pkgdesc="C++ implementation of WS-Descovery daemon influenced by wsdd and wsdd2"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -16,7 +16,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
     "wsddn.sysusers"
 )
 
-b2sums=('56d37fa1cddce2198df57c1e7b6673613fa9a537e7e255c4a14d392b472465ccde83dd9242d28044c4a2f6a0ac215c602ab708c5c40917306785d0e3cd7530b9'
+b2sums=('38355df2067d9986c56b91240f5e6909ecc03cdd2fd372053b4537f91bcd7d49d72ff16968a4bdf56007552a8c86b25870b63aad7b11c756d2e46c22fe790314'
         '6d897529bdd90c9d2258568f880d4a8180bb39f26cb40dead105d253ba87c1394291f618d8873908bb7db887fa4ddaab31d7a7b1f13485fc1b1cea5c40b40643'
         'ec5ada0067634a019da056600e34c42b8c0ce465e66850f12087b75967fc69f4a2d1b9f04f1b16afeeaf83aaa1e5af18d9f8408b726b273e214181f5d95a4394'
         'c0086f18df123e08a3bd18a8d1bbdb158f30533f13f455867cdf64c229d8e880a40b10bdee619b36b557cdd37a094270c175a020c4fe4123bf0c24c433050206')
@@ -25,10 +25,10 @@ build() {
     cd "${_altname}-${pkgver}/"
 
     # Doesnt build with system libxml2 keep PREFER_SYSTEM set to OFF
-    cmake -DCMAKE_BUILD_TYPE= \
+    cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo \
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -DFETCHCONTENT_QUIET=OFF \
-        -DWSDDN_PREFER_SYSTEM=OFF \
+        -DWSDDN_PREFER_SYSTEM=ON \
         -DWSDDN_WITH_SYSTEMD="yes" \
         -Bbuild -S.
 
