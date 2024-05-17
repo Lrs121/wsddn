@@ -1,3 +1,5 @@
+# (RETIRED) USE AUR wsdd-native instead.
+
 # wsddn PKGBUILD
 
 Stock config is included and put in /etc/conf.d/wsddn.conf by default
